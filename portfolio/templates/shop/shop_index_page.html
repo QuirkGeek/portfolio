@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailimages_tags %}
+{% block content %}
+<main class="container my-5 mt-5">
+    <div class="row">
+        {% for product in products %}
+        <div class="col-md-4 mb-4 mt-5">
+            <div class="card">
+                {% if product.image %}
+                {% image product.image fill-300x200 %}
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.sku }}</h5>
+                    <p class="card-text">{{ product.short_description|default:"No description available." }}</p>
+                    <p class="card-text"><strong>Price: ${{ product.price }}</strong></p>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12" style="min-height: 600px; display: flex; align-items: center; justify-content: center;">
+            <p class="text-center">No products available at the moment.</p>
+        </div>
+        {% endfor %}
+    </div>
+</main>
+{% endblock content %}

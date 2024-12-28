@@ -1,0 +1,11 @@
+{% extends "wagtailadmin/login.html" %}
+
+<div style="margin-top:80px;">
+{% block below_login %} If you are not Martin you should not be here! {% endblock %}
+</div>
+
+{% block branding_login %}Sign in to QuirkGeek {% endblock %}
+
+{% block login_form %}
+    {{ block.super }}
+{% endblock %}
